@@ -1,0 +1,16 @@
+D:\Supermarket-mvp\Supermarket-mvp\bin\Debug\net8.0-windows\Supermarket-mvp.exe
+D:\Supermarket-mvp\Supermarket-mvp\bin\Debug\net8.0-windows\Supermarket-mvp.deps.json
+D:\Supermarket-mvp\Supermarket-mvp\bin\Debug\net8.0-windows\Supermarket-mvp.runtimeconfig.json
+D:\Supermarket-mvp\Supermarket-mvp\bin\Debug\net8.0-windows\Supermarket-mvp.dll
+D:\Supermarket-mvp\Supermarket-mvp\bin\Debug\net8.0-windows\Supermarket-mvp.pdb
+D:\Supermarket-mvp\Supermarket-mvp\obj\Debug\net8.0-windows\Supermarket_mvp.Form1.resources
+D:\Supermarket-mvp\Supermarket-mvp\obj\Debug\net8.0-windows\Supermarket-mvp.csproj.GenerateResource.cache
+D:\Supermarket-mvp\Supermarket-mvp\obj\Debug\net8.0-windows\Supermarket-mvp.GeneratedMSBuildEditorConfig.editorconfig
+D:\Supermarket-mvp\Supermarket-mvp\obj\Debug\net8.0-windows\Supermarket-mvp.AssemblyInfoInputs.cache
+D:\Supermarket-mvp\Supermarket-mvp\obj\Debug\net8.0-windows\Supermarket-mvp.AssemblyInfo.cs
+D:\Supermarket-mvp\Supermarket-mvp\obj\Debug\net8.0-windows\Supermarket-mvp.csproj.CoreCompileInputs.cache
+D:\Supermarket-mvp\Supermarket-mvp\obj\Debug\net8.0-windows\Supermarket-mvp.dll
+D:\Supermarket-mvp\Supermarket-mvp\obj\Debug\net8.0-windows\refint\Supermarket-mvp.dll
+D:\Supermarket-mvp\Supermarket-mvp\obj\Debug\net8.0-windows\Supermarket-mvp.pdb
+D:\Supermarket-mvp\Supermarket-mvp\obj\Debug\net8.0-windows\Supermarket-mvp.genruntimeconfig.cache
+D:\Supermarket-mvp\Supermarket-mvp\obj\Debug\net8.0-windows\ref\Supermarket-mvp.dll
