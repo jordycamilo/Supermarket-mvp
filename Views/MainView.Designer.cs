@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            BtnExit = new Button();
             BtnPayMode = new Button();
             pictureBox1 = new PictureBox();
-            BtnExit = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -46,6 +46,16 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(233, 450);
             panel1.TabIndex = 0;
+            // 
+            // BtnExit
+            // 
+            BtnExit.BackgroundImage = Properties.Resources.cerrar1;
+            BtnExit.BackgroundImageLayout = ImageLayout.Zoom;
+            BtnExit.Location = new Point(0, 295);
+            BtnExit.Name = "BtnExit";
+            BtnExit.Size = new Size(233, 68);
+            BtnExit.TabIndex = 1;
+            BtnExit.UseVisualStyleBackColor = true;
             // 
             // BtnPayMode
             // 
@@ -67,23 +77,15 @@
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
             // 
-            // BtnExit
-            // 
-            BtnExit.BackgroundImage = Properties.Resources.cerrar1;
-            BtnExit.BackgroundImageLayout = ImageLayout.Zoom;
-            BtnExit.Location = new Point(0, 295);
-            BtnExit.Name = "BtnExit";
-            BtnExit.Size = new Size(233, 68);
-            BtnExit.TabIndex = 1;
-            BtnExit.UseVisualStyleBackColor = true;
-            // 
             // MainView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(panel1);
+            IsMdiContainer = true;
             Name = "MainView";
+            SizeGripStyle = SizeGripStyle.Show;
             Text = "Supermarket";
             WindowState = FormWindowState.Maximized;
             panel1.ResumeLayout(false);

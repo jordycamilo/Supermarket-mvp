@@ -121,9 +121,9 @@
             // 
             // BtnClose
             // 
-            BtnClose.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            BtnClose.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             BtnClose.Image = Properties.Resources.cerrar;
-            BtnClose.Location = new Point(569, 254);
+            BtnClose.Location = new Point(672, 245);
             BtnClose.Name = "BtnClose";
             BtnClose.Size = new Size(98, 56);
             BtnClose.TabIndex = 7;
@@ -131,9 +131,9 @@
             // 
             // BtnDelete
             // 
-            BtnDelete.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            BtnDelete.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             BtnDelete.Image = Properties.Resources.delete;
-            BtnDelete.Location = new Point(569, 184);
+            BtnDelete.Location = new Point(672, 175);
             BtnDelete.Name = "BtnDelete";
             BtnDelete.Size = new Size(98, 56);
             BtnDelete.TabIndex = 6;
@@ -141,9 +141,9 @@
             // 
             // BtnEdit
             // 
-            BtnEdit.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            BtnEdit.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             BtnEdit.Image = Properties.Resources.edit;
-            BtnEdit.Location = new Point(569, 109);
+            BtnEdit.Location = new Point(672, 100);
             BtnEdit.Name = "BtnEdit";
             BtnEdit.Size = new Size(98, 56);
             BtnEdit.TabIndex = 5;
@@ -151,9 +151,9 @@
             // 
             // BtnNew
             // 
-            BtnNew.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            BtnNew.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             BtnNew.Image = Properties.Resources._new;
-            BtnNew.Location = new Point(569, 40);
+            BtnNew.Location = new Point(672, 31);
             BtnNew.Name = "BtnNew";
             BtnNew.Size = new Size(98, 56);
             BtnNew.TabIndex = 4;
@@ -174,7 +174,7 @@
             // 
             // BtnSearch
             // 
-            BtnSearch.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            BtnSearch.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             BtnSearch.Image = Properties.Resources.search_small;
             BtnSearch.Location = new Point(290, 47);
             BtnSearch.Name = "BtnSearch";

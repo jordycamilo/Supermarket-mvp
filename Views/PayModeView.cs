@@ -128,7 +128,7 @@ namespace Supermarket_mvp.Views
             DgPayMode.DataSource= payModelist;
         }
 
-        private static PayModeView? instance;
+        private static PayModeView instance;
         
             public static PayModeView GetInstance(Form parentContainer)
             {
