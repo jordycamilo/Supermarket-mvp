@@ -31,12 +31,14 @@
             panel1 = new Panel();
             BtnPayMode = new Button();
             pictureBox1 = new PictureBox();
+            BtnExit = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
+            panel1.Controls.Add(BtnExit);
             panel1.Controls.Add(BtnPayMode);
             panel1.Controls.Add(pictureBox1);
             panel1.Dock = DockStyle.Left;
@@ -49,21 +51,31 @@
             // 
             BtnPayMode.BackgroundImage = Properties.Resources.buy;
             BtnPayMode.BackgroundImageLayout = ImageLayout.Zoom;
-            BtnPayMode.Location = new Point(64, 103);
+            BtnPayMode.Location = new Point(0, 103);
             BtnPayMode.Name = "BtnPayMode";
-            BtnPayMode.Size = new Size(72, 65);
+            BtnPayMode.Size = new Size(233, 65);
             BtnPayMode.TabIndex = 1;
             BtnPayMode.UseVisualStyleBackColor = true;
             // 
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.sell;
-            pictureBox1.Location = new Point(35, 12);
+            pictureBox1.Location = new Point(0, 12);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(129, 64);
+            pictureBox1.Size = new Size(233, 64);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
+            // 
+            // BtnExit
+            // 
+            BtnExit.BackgroundImage = Properties.Resources.cerrar1;
+            BtnExit.BackgroundImageLayout = ImageLayout.Zoom;
+            BtnExit.Location = new Point(0, 295);
+            BtnExit.Name = "BtnExit";
+            BtnExit.Size = new Size(233, 68);
+            BtnExit.TabIndex = 1;
+            BtnExit.UseVisualStyleBackColor = true;
             // 
             // MainView
             // 
@@ -84,5 +96,6 @@
         private Panel panel1;
         private Button BtnPayMode;
         private PictureBox pictureBox1;
+        private Button BtnExit;
     }
 }
