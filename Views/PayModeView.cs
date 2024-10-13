@@ -86,6 +86,27 @@ namespace Supermarket_mvp.Views
         {
             DgPayMode.DataSource= payModelist;
         }
+
+        private static PayModeView instance;
+        
+            public static PayModeView GetInstance()
+            {
+                if (instance == null || instance.IsDisposed)
+                {
+                    instance = new PayModeView();
+                }
+                else
+                {
+                    if (instance.WindowState == FormWindowState.Minimized)
+                    {
+                        instance.WindowState = FormWindowState.Normal;
+                    }
+                    instance.BringToFront();
+                }
+
+                return instance;
+            }
+        
     
         
     }
