@@ -40,12 +40,13 @@ namespace Supermarket_mvp.Views
             };
             BtnPNew.Click += delegate
             {
-               PAddNewEvent?.Invoke(this, EventArgs.Empty);
+                PAddNewEvent?.Invoke(this, EventArgs.Empty);
                 tabControl1.TabPages.Remove(tabPageProductList);
                 tabControl1.TabPages.Add(tabPageProductDetail);
                 tabPageProductDetail.Text = "Add New Product";
             };
-            BtnPEdit.Click += delegate {
+            BtnPEdit.Click += delegate
+            {
                 PEditEvent?.Invoke(this, EventArgs.Empty);
                 tabControl1.TabPages.Remove(tabPageProductList);
                 tabControl1.TabPages.Add(tabPageProductDetail);
@@ -64,9 +65,10 @@ namespace Supermarket_mvp.Views
                 }
 
             };
-            BtnPSave.Click += delegate {
+            BtnPSave.Click += delegate
+            {
                 PSaveEvent?.Invoke(this, EventArgs.Empty);
-                if (PisSuccessful) 
+                if (PisSuccessful)
                 {
                     tabControl1.TabPages.Remove(tabPageProductDetail);
                     tabControl1.TabPages.Add(tabPageProductList);
@@ -74,7 +76,8 @@ namespace Supermarket_mvp.Views
                 MessageBox.Show(PMessage);
 
             };
-            BtnPCancel.Click += delegate {
+            BtnPCancel.Click += delegate
+            {
                 PCancelEvent?.Invoke(this, EventArgs.Empty);
 
                 tabControl1.TabPages.Remove(tabPageProductDetail);
@@ -119,7 +122,7 @@ namespace Supermarket_mvp.Views
             set { Pmessage = value; }
         }
 
-       
+
 
         public event EventHandler PSearchEvent;
         public event EventHandler PAddNewEvent;
@@ -135,12 +138,12 @@ namespace Supermarket_mvp.Views
 
         private static ProductView Pinstance;
 
-        public static ProductView GetInstance(Form parentContainer)
+        public static ProductView PGetInstance(Form parentContainer)
         {
             if (Pinstance == null || Pinstance.IsDisposed)
             {
                 Pinstance = new ProductView();
-               Pinstance.MdiParent = parentContainer;
+                Pinstance.MdiParent = parentContainer;
                 Pinstance.FormBorderStyle = FormBorderStyle.None;
                 Pinstance.Dock = DockStyle.Fill;
 
@@ -157,7 +160,6 @@ namespace Supermarket_mvp.Views
             return Pinstance;
         }
 
-
-
+       
     }
 }

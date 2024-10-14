@@ -116,6 +116,7 @@
             tabPageProductList.TabIndex = 0;
             tabPageProductList.Text = "Product List";
             tabPageProductList.UseVisualStyleBackColor = true;
+            
             // 
             // BtnPClose
             // 

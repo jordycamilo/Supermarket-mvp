@@ -26,7 +26,7 @@ namespace Supermarket_mvp.Presenters
             this.Pview.PSearchEvent += SearchProduct;
             this.Pview.PAddNewEvent += AddNewProduct;
             this.Pview.PEditEvent += LoadSelectProductToEdit;
-            this.Pview.PDeleteEvent += DeleteSelectedProduct;
+            this.Pview.PDeleteEvent += PDeleteSelectedProduct;
             this.Pview.PSaveEvent += SaveProduct;
             this.Pview.PCancelEvent += CancelActionProduct;
 
@@ -87,7 +87,7 @@ namespace Supermarket_mvp.Presenters
             Pview.ProductObservation = "";
         }
 
-        private void DeleteSelectedProduct(object? sender, EventArgs e)
+        private void PDeleteSelectedProduct(object? sender, EventArgs e)
         {
             try
             {

@@ -171,6 +171,7 @@
             DgPayMode.ReadOnly = true;
             DgPayMode.Size = new Size(503, 201);
             DgPayMode.TabIndex = 3;
+            
             // 
             // BtnSearch
             // 

@@ -11,12 +11,12 @@ using Supermarket_mvp.Views;
 
 namespace Supermarket_mvp.Views
 {
-    public partial class PayModeView : Form , IPayModeView
+    public partial class PayModeView : Form, IPayModeView
     {
         private bool isSuccessful;
         private string message;
         private bool isEdit;
-        
+
 
         public PayModeView()
         {
@@ -24,7 +24,7 @@ namespace Supermarket_mvp.Views
             AssociateAndRaiseViewEvents();
             tabControl.TabPages.Remove(tabPagePayModeDetail);
             BtnClose.Click += delegate { this.Close(); };
-            
+
         }
 
         private void AssociateAndRaiseViewEvents()
@@ -45,15 +45,17 @@ namespace Supermarket_mvp.Views
                 tabControl.TabPages.Add(tabPagePayModeDetail);
                 tabPagePayModeDetail.Text = "Add New Pay Mode";
             };
-            BtnEdit.Click += delegate { EditEvent?.Invoke(this, EventArgs.Empty);
+            BtnEdit.Click += delegate
+            {
+                EditEvent?.Invoke(this, EventArgs.Empty);
                 tabControl.TabPages.Remove(tabPagePayModeList);
                 tabControl.TabPages.Add(tabPagePayModeDetail);
                 tabPagePayModeDetail.Text = "Edit Pay Mode";
 
             };
-            BtnDelete.Click += delegate 
+            BtnDelete.Click += delegate
             {
-                var result = MessageBox.Show( "Are you sure you want to delete the selected Pay Mode", "Warning",
+                var result = MessageBox.Show("Are you sure you want to delete the selected Pay Mode", "Warning",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                 if (result == DialogResult.Yes)
@@ -63,7 +65,9 @@ namespace Supermarket_mvp.Views
                 }
 
             };
-            BtnSave.Click += delegate { SaveEvent?.Invoke(this, EventArgs.Empty);
+            BtnSave.Click += delegate
+            {
+                SaveEvent?.Invoke(this, EventArgs.Empty);
                 if (isSuccessful) // SI grabar fue exitoso
                 {
                     tabControl.TabPages.Remove(tabPagePayModeDetail);
@@ -72,7 +76,9 @@ namespace Supermarket_mvp.Views
                 MessageBox.Show(Message);
 
             };
-            BtnCancel.Click += delegate { CancelEvent?.Invoke(this, EventArgs.Empty);
+            BtnCancel.Click += delegate
+            {
+                CancelEvent?.Invoke(this, EventArgs.Empty);
 
                 tabControl.TabPages.Remove(tabPagePayModeDetail);
                 tabControl.TabPages.Add(tabPagePayModeList);
@@ -80,7 +86,7 @@ namespace Supermarket_mvp.Views
 
         }
 
-        public string PayModeId 
+        public string PayModeId
         {
             get { return TxtPayModeId.Text; }
             set { TxtPayModeId.Text = value; }
@@ -95,22 +101,22 @@ namespace Supermarket_mvp.Views
             get { return TxtPayModeObservation.Text; }
             set { TxtPayModeObservation.Text = value; }
         }
-        public string SearchValue 
+        public string SearchValue
         {
             get { return TxtSearch.Text; }
             set { TxtSearch.Text = value; }
         }
-        public bool IsEdit 
+        public bool IsEdit
         {
             get { return isEdit; }
             set { isEdit = value; }
         }
-        public bool IsSuccesful 
+        public bool IsSuccesful
         {
             get { return isSuccessful; }
             set { isSuccessful = value; }
         }
-        public string Message 
+        public string Message
         {
             get { return message; }
             set { message = value; }
@@ -125,34 +131,33 @@ namespace Supermarket_mvp.Views
 
         public void SetPayModeListBildingSource(BindingSource payModelist)
         {
-            DgPayMode.DataSource= payModelist;
+            DgPayMode.DataSource = payModelist;
         }
 
         private static PayModeView instance;
-        
-            public static PayModeView GetInstance(Form parentContainer)
+
+        public static PayModeView GetInstance(Form parentContainer)
+        {
+            if (instance == null || instance.IsDisposed)
             {
-                if (instance == null || instance.IsDisposed)
-                {
-                    instance = new PayModeView();
-                    instance.MdiParent = parentContainer;
-                    instance.FormBorderStyle = FormBorderStyle.None;
-                    instance.Dock = DockStyle.Fill;
+                instance = new PayModeView();
+                instance.MdiParent = parentContainer;
+                instance.FormBorderStyle = FormBorderStyle.None;
+                instance.Dock = DockStyle.Fill;
 
-                }
-                else
-                {
-                    if (instance.WindowState == FormWindowState.Minimized)
-                    {
-                        instance.WindowState = FormWindowState.Normal;
-                    }
-                    instance.BringToFront();
-                }
-
-                return instance;
             }
-        
-    
-        
+            else
+            {
+                if (instance.WindowState == FormWindowState.Minimized)
+                {
+                    instance.WindowState = FormWindowState.Normal;
+                }
+                instance.BringToFront();
+            }
+
+            return instance;
+        }
+
+       
     }
 }
