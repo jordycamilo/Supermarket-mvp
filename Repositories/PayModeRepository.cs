@@ -91,40 +91,47 @@ namespace Supermarket_mvp.Repositories
             return payModeList;
         }
 
-        public IEnumerable<PayModeModel> GetByValue (string value)
+        public IEnumerable<PayModeModel> GetByValue(string value)
         {
             var payModeList = new List<PayModeModel>();
-            int payModeId = int.TryParse(value, out _) ? Convert.ToInt32(value) : 0;
+            int payModeId = int.TryParse(value, out var id) ? id : 0;
             string payModeName = value;
 
             using (var connection = new SqlConnection(connectionString))
             {
+                connection.Open(); // Abre la conexión
+
                 using (var command = new SqlCommand())
                 {
-                    connection.Open();
-                    command.Connection = connection;
+                    command.Connection = connection; // Asigna la conexión al comando
                     command.CommandText = @"SELECT * FROM PayMode
-                                WHERE Pay_Mode_Id=@id OR Pay_Mode_Name LIKE @name+'%'
-                                ORDER BY Pay_Mode_Id DESC";
-                    command.Parameters.AddWithValue("@id", SqlDbType.Int).Value = payModeId;
-                    command.Parameters.AddWithValue("@name", SqlDbType.NVarChar).Value = payModeName;
+                                    WHERE (@id = 0 OR Pay_Mode_Id = @id) 
+                                    OR Pay_Mode_Name LIKE @name + '%'
+                                    ORDER BY Pay_Mode_Id DESC";
+
+                    command.Parameters.Add("@id", SqlDbType.Int).Value = payModeId;
+                    command.Parameters.Add("@name", SqlDbType.NVarChar).Value = payModeName;
 
                     using (var reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            var payModeModel = new PayModeModel();
-                            payModeModel.Id = (int)reader["Pay_Mode_Id"];
-                            payModeModel.Name = reader["Pay Mode Name"].ToString();
-                            payModeModel.Observation = reader["Pay_Mode_Observation"].ToString();
+                            var payModeModel = new PayModeModel
+                            {
+                                Id = (int)reader["Pay_Mode_Id"],
+                                Name = reader["Pay_Mode_Name"].ToString(), // Asegúrate que este nombre sea correcto
+                                Observation = reader["Pay_Mode_Observation"].ToString()
+                            };
                             payModeList.Add(payModeModel);
                         }
                     }
                 }
-                return payModeList;
             }
+            return payModeList;
         }
+
     }
+}
 
     
-}
+
