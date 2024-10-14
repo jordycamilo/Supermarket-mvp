@@ -9,5 +9,6 @@ namespace Supermarket_mvp.Repositories
     internal class BaseRepository
     {
         protected string connectionString;
+        protected string connectionString1;
     }
 }

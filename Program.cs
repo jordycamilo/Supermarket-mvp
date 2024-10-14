@@ -23,9 +23,12 @@ namespace Supermarket_mvp
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             string sqlConnectionString = Settings.Default.SqlConnection;
+            string sqlConnection1String = Settings.Default.SqlConnection1;
             MainView view = new MainView();
-           
+            
             new MainPresenter(view, sqlConnectionString);
+            
+
             Application.Run((Form) view);   
             
 

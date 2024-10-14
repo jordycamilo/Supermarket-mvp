@@ -8,13 +8,13 @@ namespace Supermarket_mvp.Models
 {
     internal interface IProductRepository
     {
-        void Add(ProductModel productModel);
-        void Edit(ProductModel productModel);
+        void PAdd(ProductModel productModel);
+        void PEdit(ProductModel productModel);
 
-        void Delete(int PId);
+        void PDelete(int PId);
 
-        IEnumerable<ProductModel> GetAll();
-        IEnumerable<ProductModel> GetByValue(string value);
+        IEnumerable<ProductModel> PGetAll();
+        IEnumerable<ProductModel> PGetByValue(string Pvalue);
 
 
 

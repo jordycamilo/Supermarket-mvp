@@ -12,17 +12,17 @@ namespace Supermarket_mvp.Views
         string ProductName { get; set; }
         string ProductObservation { get; set; }
 
-        string SearchValue { get; set; }
-        bool IsEdit { get; set; }
-        bool IsSuccesful { get; set; }
-        string Message { get; set; }
+        string PSearchValue { get; set; }
+        bool PIsEdit { get; set; }
+        bool PIsSuccesful { get; set; }
+        string PMessage { get; set; }
 
-        event EventHandler SearchEvent;
-        event EventHandler AddNewEvent;
-        event EventHandler EditEvent;
-        event EventHandler DeleteEvent;
-        event EventHandler SaveEvent;
-        event EventHandler CancelEvent;
+        event EventHandler PSearchEvent;
+        event EventHandler PAddNewEvent;
+        event EventHandler PEditEvent;
+        event EventHandler PDeleteEvent;
+        event EventHandler PSaveEvent;
+        event EventHandler PCancelEvent;
 
         void SetProductListBildingSource(BindingSource productlist);
         void Show();

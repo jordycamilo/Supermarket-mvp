@@ -15,15 +15,15 @@ namespace Supermarket_mvp.Repositories
 {
     internal class ProductRepository : BaseRepository, IProductRepository
     {
-        public ProductRepository(string connectionString)
+        public ProductRepository(string connectionString1)
         {
-            this.connectionString = connectionString;
+            this.connectionString1 = connectionString1;
         }
 
 
         public void Add(ProductModel productModel)
         {
-            using (var connection = new SqlConnection(connectionString))
+            using (var connection = new SqlConnection (connectionString1))
             using (var command = new SqlCommand())
             {
                 connection.Open();
@@ -40,22 +40,22 @@ namespace Supermarket_mvp.Repositories
             throw new NotImplementedException();
         }
 
-        public void PDelete(int id)
+        public void PDelete(int Pid)
         {
-            using (var connection = new SqlConnection(connectionString))
+            using (var connection = new SqlConnection(connectionString1))
             using (var command = new SqlCommand())
             {
                 connection.Open();
                 command.Connection = connection;
                 command.CommandText = "DELETE FROM PayMode WHERE Pay_Mode_Id = @id";
-                command.Parameters.Add("@id", SqlDbType.Int).Value = id;
+                command.Parameters.Add("@id", SqlDbType.Int).Value = Pid;
                 command.ExecuteNonQuery();
             }
         }
 
         public void PEdit(ProductModel productModel)
         {
-            using (var connection = new SqlConnection(connectionString))
+            using (var connection = new SqlConnection(connectionString1))
             using (var command = new SqlCommand())
             {
                 connection.Open();
@@ -71,35 +71,44 @@ namespace Supermarket_mvp.Repositories
             }
         }
 
-        public void Edit(ProductModel productModel)
-        {
-            throw new NotImplementedException();
-        }
 
-        public IEnumerable<ProductModel> GetAll()
+
+        public IEnumerable<ProductModel> PGetAll()
         {
             var productList = new List<ProductModel>();
-            using (var connection = new SqlConnection(connectionString))
-            using (var command = new SqlCommand())
-            {
-                connection.Open();
-                command.Connection = connection;
-                command.CommandText = "SELECT * FROM Product ORDER BY Pay_Mode_Id DESC";
 
-                using (var reader = command.ExecuteReader())
+            try
+            {
+                using (var connection = new SqlConnection(connectionString1))
                 {
-                    while (reader.Read())
+                    connection.Open();
+                    using (var command = new SqlCommand("SELECT * FROM Product ORDER BY ProductId DESC", connection)) // Asegúrate de usar la columna correcta
                     {
-                        var productModel = new ProductModel();
-                        productModel.PId = (int)reader["ProductId"];
-                        productModel.PName = reader["ProductName"].ToString();
-                        productModel.PObservation = reader["ProductObservation"].ToString();
-                        productList.Add(productModel);
+                        using (var reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                var productModel = new ProductModel
+                                {
+                                    PId = (int)reader["ProductId"],
+                                    PName = reader["ProductName"].ToString(),
+                                    PObservation = reader["ProductObservation"].ToString()
+                                };
+                                productList.Add(productModel);
+                            }
+                        }
                     }
                 }
             }
+            catch (Exception ex)
+            {
+               
+                Console.WriteLine("Error al obtener productos: " + ex.Message);
+            }
+
             return productList;
         }
+
 
         public IEnumerable<ProductModel> PGetByValue(string Pvalue)
         {
@@ -107,13 +116,13 @@ namespace Supermarket_mvp.Repositories
             int productId = int.TryParse(Pvalue, out var id) ? id : 0;
             string productName = Pvalue;
 
-            using (var connection = new SqlConnection(connectionString))
+            using (var connection = new SqlConnection(connectionString1))
             {
-                connection.Open(); // Abre la conexión
+                connection.Open(); 
 
                 using (var command = new SqlCommand())
                 {
-                    command.Connection = connection; // Asigna la conexión al comando
+                    command.Connection = connection;
                     command.CommandText = @"SELECT * FROM PayMode
                                     WHERE (@id = 0 OR Pay_Mode_Id = @id) 
                                     OR Pay_Mode_Name LIKE @name + '%'
@@ -129,7 +138,7 @@ namespace Supermarket_mvp.Repositories
                             var productModel = new ProductModel
                             {
                                PId = (int)reader["ProductId"],
-                                PName = reader["ProductName"].ToString(), // Asegúrate que este nombre sea correcto
+                                PName = reader["ProductName"].ToString(), 
                                 PObservation = reader["productObservation"].ToString()
                             };
                             productList.Add(productModel);
@@ -139,15 +148,6 @@ namespace Supermarket_mvp.Repositories
             }
             return productList;
         }
-
-        IEnumerable<ProductModel> IProductRepository.PGetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        IEnumerable<ProductModel> IProductRepository.PGetByValue(string Pvalue)
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }

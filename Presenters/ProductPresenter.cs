@@ -6,16 +6,17 @@ using System.Threading.Tasks;
 using Supermarket_mvp.Models;
 using Supermarket_mvp.Views;
 
+
 namespace Supermarket_mvp.Presenters
 {
     internal class ProductPresenter
     {
         private IProductView Pview;
-        private ProductRepository Prepository;
+        private IProductRepository Prepository;
         private BindingSource productBindingSource;
         private IEnumerable<ProductModel> productList;
 
-        public ProductPresenter(IProductView Pview, ProductRepository Prepository)
+        public ProductPresenter(IProductView Pview, IProductRepository Prepository)
         {
             this.productBindingSource = new BindingSource();
             this.Pview = Pview;
@@ -27,20 +28,20 @@ namespace Supermarket_mvp.Presenters
             this.Pview.PEditEvent += LoadSelectProductToEdit;
             this.Pview.PDeleteEvent += DeleteSelectedProduct;
             this.Pview.PSaveEvent += SaveProduct;
-            this.Pview.PCancelEvent += CancelAction;
+            this.Pview.PCancelEvent += CancelActionProduct;
 
             this.Pview.SetProductListBildingSource(productBindingSource);
-            LoadAllPayModeList();
+            LoadAllProductList();
             this.Pview.Show();
         }
 
-        private void LoadAllPayModeList()
+        private void LoadAllProductList()
         {
-            productList = Prepository.GetAll();
+            productList = Prepository.PGetAll();
             productBindingSource.DataSource = productList;
         }
 
-        private void CancelAction(object? sender, EventArgs e)
+        private void CancelActionProduct(object? sender, EventArgs e)
         {
             CleanViewFields();
         }
@@ -58,12 +59,12 @@ namespace Supermarket_mvp.Presenters
                 new Common.ModelDataValidation().Validate(product);
                 if (Pview.PIsEdit)
                 {
-                    Prepository.Edit(product);
+                    Prepository.PEdit(product);
                     Pview.PMessage = "Product edited successfully";
                 }
                 else
                 {
-                    Prepository.Add(product);
+                    Prepository.PAdd(product);
                     Pview.PMessage = "Product added successfully";
                 }
                 Pview.PIsSuccesful = true;
@@ -91,10 +92,10 @@ namespace Supermarket_mvp.Presenters
             try
             {
 
-                var product = (PayModeModel)productBindingSource.Current;
+                var product = (ProductModel)productBindingSource.Current;
 
 
-                Prepository.Delete(product.Id);
+                Prepository.PDelete(product.PId);
 
 
                 Pview.PIsSuccesful = true;
@@ -136,11 +137,11 @@ namespace Supermarket_mvp.Presenters
             bool emptyValue = string.IsNullOrWhiteSpace(this.Pview.PSearchValue);
             if (emptyValue == false)
             {
-                productList = Prepository.GetByValue(this.Pview.PSearchValue);
+                productList = Prepository.PGetByValue(this.Pview.PSearchValue);
             }
             else
             {
-                productList = Prepository.GetAll();
+                productList = Prepository.PGetAll();
             }
             productBindingSource.DataSource = productList;
         }
